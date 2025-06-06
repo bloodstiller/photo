@@ -19,3 +19,6 @@ theme = 'gallery'
   name = "Dennistoun"
   url = "/dennistoun"
   weight = 12
+
+[build]
+  timeout = 120
