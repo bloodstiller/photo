@@ -1,0 +1,14 @@
+{{ define "main" }}
+  {{ partial "title.html" . }}
+
+  {{ if ne .Type "page" }}
+    {{ partial "gallery.html" . }}
+    {{ partial "related.html" . }}
+  {{ end }}
+
+  {{ with .Content }}
+    <section class="prose">
+      {{ . }}
+    </section>
+  {{ end }}
+{{ end }}
