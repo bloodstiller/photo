@@ -1,5 +1,7 @@
 ---
 title: "About Me"
+type: "page"
+layout: "page"
 url: "/about"
 _build:
   list: never
