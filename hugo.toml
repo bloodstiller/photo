@@ -1,4 +1,21 @@
 baseURL = 'https://martindbarker.com/'
 languageCode = 'en-us'
-title = 'Martin D Barker '
+title = 'Martin D Barker Photography'
 theme = 'gallery'
+
+[menu]
+
+[[menu.main]]
+  name = "About"
+  url = "/about"
+  weight = 10
+
+[[menu.main]]
+  name = "Street"
+  url = "/street"
+  weight = 11
+
+[[menu.main]]
+  name = "Dennistoun"
+  url = "/dennistoun"
+  weight = 12
