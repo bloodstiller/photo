@@ -11,12 +11,12 @@ theme = 'gallery'
   weight = 10
 
 [[menu.main]]
-  name = "street"
+  name = "Street"
   url = "/street"
   weight = 11
 
 [[menu.main]]
-  name = "dennistoun"
+  name = "Dennistoun"
   url = "/dennistoun"
   weight = 12
 
