@@ -22,3 +22,4 @@ theme = 'gallery'
 
 [build]
   timeout = 120
+

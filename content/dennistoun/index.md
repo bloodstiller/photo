@@ -1,6 +1,6 @@
 ---
 sort_by: Params.weight
-title: Dennistoun
+title: dennistoun
 resources:
   - src: MartinDBarkerDennistoun-2.jpg
     params:
