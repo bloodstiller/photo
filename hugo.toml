@@ -6,7 +6,7 @@ theme = 'gallery'
 [menu]
 
 [[menu.main]]
-  name = "about"
+  name = "About Me"
   url = "/about"
   weight = 10
 
@@ -19,6 +19,11 @@ theme = 'gallery'
   name = "Dennistoun"
   url = "/dennistoun"
   weight = 12
+
+[[menu.main]]
+  name = "Portraits"
+  url = "/Portraits"
+  weight = 13
 
 [build]
   timeout = 120
