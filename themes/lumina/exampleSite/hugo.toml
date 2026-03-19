@@ -1,0 +1,29 @@
+baseURL = "https://yoursite.com/"
+languageCode = "en-GB"
+title = "Jane Doe"
+theme  = "lumina"
+
+[outputs]
+  home    = ["HTML", "RSS"]
+  section = ["HTML"]
+  page    = ["HTML"]
+
+[imaging]
+  quality        = 85
+  resampleFilter = "lanczos"
+  bgColor        = "#F8F7F4"
+
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  author      = "Jane Doe"
+  tagline     = "Photographer"
+  description = "Photography portfolio"
+  aboutPage   = "/about/"
+  heroTitle    = "Selected Work"
+  heroSubtitle = "Photography from around the world"
+  footerText  = ""
+
+[markup.goldmark.renderer]
+  unsafe = true

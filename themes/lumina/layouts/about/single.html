@@ -1,0 +1,37 @@
+{{ define "main" }}
+<article class="about-page">
+  <div class="about-page__inner">
+
+    {{ with .Params.portrait }}
+      <div class="about-page__portrait-wrap">
+        <img
+          class="about-page__portrait"
+          src="{{ . | relURL }}"
+          alt="{{ $.Site.Params.author | default $.Site.Title }}"
+        />
+      </div>
+    {{ end }}
+
+    <div class="about-page__content">
+      <h1 class="about-page__title">{{ .Title }}</h1>
+      {{ with .Params.subtitle }}
+        <p class="about-page__subtitle">{{ . }}</p>
+      {{ end }}
+      <div class="about-page__body">
+        {{ .Content }}
+      </div>
+
+      {{ with .Params.contact }}
+      <div class="about-page__contact">
+        {{ range . }}
+        <a href="{{ .url }}" class="contact-link" {{ if .external }}target="_blank" rel="noopener noreferrer"{{ end }}>
+          {{ .label }}
+        </a>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+
+  </div>
+</article>
+{{ end }}

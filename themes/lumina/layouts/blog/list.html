@@ -1,0 +1,68 @@
+{{ define "main" }}
+
+<section class="blog-hero">
+  <h1 class="blog-hero__title">{{ .Title | default "Journal" }}</h1>
+  {{ with .Params.subtitle }}
+    <p class="blog-hero__subtitle">{{ . }}</p>
+  {{ else }}
+    {{ with $.Site.Params.blogSubtitle }}
+      <p class="blog-hero__subtitle">{{ . }}</p>
+    {{ end }}
+  {{ end }}
+</section>
+
+<div class="post-list">
+  {{ range .Pages }}
+    {{ $cover := "" }}
+    {{ if .Params.cover }}
+      {{ $img := .Resources.GetMatch .Params.cover }}
+      {{ if $img }}
+        {{ $thumb := $img.Fill "560x420 q85 webp" }}
+        {{ $cover = $thumb.RelPermalink }}
+      {{ else }}
+        {{ $cover = .Params.cover | relURL }}
+      {{ end }}
+    {{ else }}
+      {{ $imgs := .Resources.ByType "image" }}
+      {{ if $imgs }}
+        {{ $thumb := (index $imgs 0).Fill "560x420 q85 webp" }}
+        {{ $cover = $thumb.RelPermalink }}
+      {{ end }}
+    {{ end }}
+
+    <article class="post-item">
+      <a href="{{ .RelPermalink }}" class="post-item__link" aria-label="Read {{ .Title }}">
+        <div class="post-item__text">
+          <div class="post-item__meta">
+            <time class="post-item__date" datetime="{{ .Date.Format "2006-01-02" }}">
+              {{ .Date.Format "2 January 2006" }}
+            </time>
+            {{ with .Params.tag }}
+              <span class="post-item__tag">{{ . }}</span>
+            {{ end }}
+          </div>
+          <h2 class="post-item__title">{{ .Title }}</h2>
+          {{ with .Params.excerpt }}
+            <p class="post-item__excerpt">{{ . }}</p>
+          {{ else }}
+            {{ with .Summary }}
+              <p class="post-item__excerpt">{{ . | plainify | truncate 160 }}</p>
+            {{ end }}
+          {{ end }}
+          <span class="post-item__read">Read more →</span>
+        </div>
+        {{ if $cover }}
+          <div class="post-item__thumb-wrap">
+            <img class="post-item__thumb" src="{{ $cover }}" alt="{{ .Title }}" loading="lazy" />
+          </div>
+        {{ end }}
+      </a>
+    </article>
+  {{ else }}
+    <div class="blog-empty">
+      <p>No posts yet. Add content to <code>content/blog/</code> to get started.</p>
+    </div>
+  {{ end }}
+</div>
+
+{{ end }}

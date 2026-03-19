@@ -1,35 +1,47 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Martin D Barker Photography</title>
+    <title>Martin Barker</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content on Martin D Barker Photography</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content on Martin Barker</description>
+    <generator>Hugo</generator>
+    <language>en-GB</language>
+    <lastBuildDate>Sun, 12 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test Post</title>
+      <link>http://localhost:1313/blog/my-first-post/</link>
+      <pubDate>Sun, 12 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/my-first-post/</guid>
+      <description></description>
+    </item>
     <item>
       <title>About Me</title>
       <link>http://localhost:1313/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/about/</guid><description>&lt;no value&gt;</description></item>
+      <guid>http://localhost:1313/about/</guid>
+      <description>Martin is a photographer based in Glasgow, Scotland. His work blends a documentary approach with a personal, intimate perspective. Martin has shot editorial and commercial projects for Man About Town, Gay Times, Tommy Hilfiger, Wonderland, and Net-a-Porter.&#xA;His practice has taken him to cities including New York, London, and Paris, though his focus remains rooted in capturing authentic, human moments. He is available for commissions and collaborations via martin@martindbarker.com.</description>
+    </item>
     <item>
       <title>Dennistoun</title>
-      <link>http://localhost:1313/dennistoun/</link>
+      <link>http://localhost:1313/albums/dennistoun/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/dennistoun/</guid>
-        <media:content url="http://localhost:1313/dennistoun/MartinDBarkerDennistoun-3_hu_4f7089475cbbdb89.jpg" type="image/jpeg"/>
-        <description>
-          &lt;img src=&quot;http://localhost:1313/dennistoun/MartinDBarkerDennistoun-3_hu_4f7089475cbbdb89.jpg&quot; /&gt;
-          &lt;p&gt;&lt;no value&gt;&lt;/p&gt;
-        </description></item>
+      <guid>http://localhost:1313/albums/dennistoun/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Portraits</title>
+      <link>http://localhost:1313/albums/portraits/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/albums/portraits/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Street</title>
-      <link>http://localhost:1313/street/</link>
+      <link>http://localhost:1313/albums/street/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/street/</guid>
-        <media:content url="http://localhost:1313/street/MartinDBarkerStreet4_hu_dd7203039a386ee5.jpg" type="image/jpeg"/>
-        <description>
-          &lt;img src=&quot;http://localhost:1313/street/MartinDBarkerStreet4_hu_dd7203039a386ee5.jpg&quot; /&gt;
-          &lt;p&gt;&lt;no value&gt;&lt;/p&gt;
-        </description></item>
+      <guid>http://localhost:1313/albums/street/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

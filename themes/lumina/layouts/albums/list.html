@@ -1,0 +1,41 @@
+{{ define "main" }}
+<section class="albums-grid" aria-label="Photography albums">
+  {{ range .Pages }}
+    {{ $coverImage := "" }}
+
+    {{ if .Params.cover }}
+      {{ $coverImage = .Params.cover | relURL }}
+    {{ else }}
+      {{ $sorted := sort (.Resources.ByType "image") "Params.weight" "asc" }}
+      {{ range $sorted }}
+        {{ if and (not $coverImage) .Params.cover }}
+          {{ $thumb := .Fill "800x600 q85 webp" }}
+          {{ $coverImage = $thumb.RelPermalink }}
+        {{ end }}
+      {{ end }}
+      {{ if not $coverImage }}
+        {{ if $sorted }}
+          {{ $thumb := (index $sorted 0).Fill "800x600 q85 webp" }}
+          {{ $coverImage = $thumb.RelPermalink }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    <a href="{{ .RelPermalink }}" class="album-card">
+      <div class="album-card__frame">
+        {{ if $coverImage }}
+          <img class="album-card__img" src="{{ $coverImage }}" alt="{{ .Title }}" loading="lazy" />
+        {{ else }}
+          <div class="album-card__placeholder">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+        {{ end }}
+      </div>
+      <div class="album-card__meta">
+        <h2 class="album-card__title">{{ .Title }}</h2>
+        {{ with .Params.location }}<p class="album-card__location">{{ . }}</p>{{ end }}
+      </div>
+    </a>
+  {{ end }}
+</section>
+{{ end }}

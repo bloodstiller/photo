@@ -1,0 +1,30 @@
+<header class="site-header">
+  <div class="site-header__inner">
+
+    <a href="{{ "/" | relURL }}" class="site-header__brand">
+      <span class="site-header__name">{{ .Site.Title }}</span>
+      {{ with .Site.Params.tagline }}
+        <span class="site-header__tagline">{{ . }}</span>
+      {{ end }}
+    </a>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul class="site-nav__list">
+        <li class="site-nav__item">
+          <a href="{{ "/" | relURL }}" class="site-nav__link{{ if .IsHome }} is-active{{ end }}">Work</a>
+        </li>
+        {{ if .Site.Params.blogEnabled }}
+        <li class="site-nav__item">
+          <a href="{{ "/blog/" | relURL }}" class="site-nav__link{{ if eq .Section "blog" }} is-active{{ end }}">Journal</a>
+        </li>
+        {{ end }}
+        {{ with .Site.Params.aboutPage }}
+        <li class="site-nav__item">
+          <a href="{{ . | relURL }}" class="site-nav__link{{ if eq $.RelPermalink . }} is-active{{ end }}">About</a>
+        </li>
+        {{ end }}
+      </ul>
+    </nav>
+
+  </div>
+</header>

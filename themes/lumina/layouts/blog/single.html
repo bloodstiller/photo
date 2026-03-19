@@ -1,0 +1,75 @@
+{{ define "main" }}
+
+<article class="post">
+
+  <header class="post__header">
+    <a href="{{ "/blog/" | relURL }}" class="post__back">← Journal</a>
+
+    <div class="post__meta">
+      <time class="post__date" datetime="{{ .Date.Format "2006-01-02" }}">
+        {{ .Date.Format "2 January 2006" }}
+      </time>
+      {{ with .Params.tag }}
+        <span class="post__tag">{{ . }}</span>
+      {{ end }}
+    </div>
+
+    <h1 class="post__title">{{ .Title }}</h1>
+
+    {{ with .Params.excerpt }}
+      <p class="post__excerpt">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  {{/* Hero image */}}
+  {{ if .Params.cover }}
+    {{ $img := .Resources.GetMatch .Params.cover }}
+    {{ if $img }}
+      {{ $hero := $img.Fit "1800x900 q90 webp" }}
+      <figure class="post__hero">
+        <img
+          class="post__hero-img"
+          src="{{ $hero.RelPermalink }}"
+          alt="{{ .Title }}"
+          width="{{ $hero.Width }}"
+          height="{{ $hero.Height }}"
+        />
+        {{ with $img.Params.caption }}
+          <figcaption class="post__hero-cap">{{ . }}</figcaption>
+        {{ end }}
+      </figure>
+    {{ end }}
+  {{ end }}
+
+  <div class="post__body">
+    {{ .Content }}
+  </div>
+
+  {{/* Prev / Next navigation */}}
+  {{ $pages := where .Site.RegularPages "Section" "blog" }}
+  {{ $prev := .PrevInSection }}
+  {{ $next := .NextInSection }}
+  {{ if or $prev $next }}
+    <nav class="post__nav" aria-label="Post navigation">
+      <div class="post__nav-inner">
+        {{ if $prev }}
+          <a href="{{ $prev.RelPermalink }}" class="post__nav-item post__nav-item--prev">
+            <span class="post__nav-label">← Previous</span>
+            <span class="post__nav-title">{{ $prev.Title }}</span>
+          </a>
+        {{ else }}
+          <div></div>
+        {{ end }}
+        {{ if $next }}
+          <a href="{{ $next.RelPermalink }}" class="post__nav-item post__nav-item--next">
+            <span class="post__nav-label">Next →</span>
+            <span class="post__nav-title">{{ $next.Title }}</span>
+          </a>
+        {{ end }}
+      </div>
+    </nav>
+  {{ end }}
+
+</article>
+
+{{ end }}

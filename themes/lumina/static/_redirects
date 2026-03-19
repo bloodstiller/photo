@@ -1,0 +1,4 @@
+# Cloudflare Pages redirect rules for Hugo static site
+# Hugo generates clean URLs — no rewrites needed beyond 404 handling
+# Add custom redirects below as needed:
+# /old-url  /new-url  301

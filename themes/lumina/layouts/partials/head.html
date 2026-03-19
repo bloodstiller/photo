@@ -1,0 +1,39 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>
+  {{- if .IsHome -}}
+    {{ .Site.Title }}
+  {{- else -}}
+    {{ .Title }} &mdash; {{ .Site.Title }}
+  {{- end -}}
+</title>
+
+{{ with .Description }}<meta name="description" content="{{ . }}" />{{ end }}
+{{ with .Site.Params.author }}<meta name="author" content="{{ . }}" />{{ end }}
+
+<!-- Open Graph -->
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}" />
+<meta property="og:site_name" content="{{ .Site.Title }}" />
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+{{ with .Params.cover }}
+<meta property="og:image" content="{{ . | absURL }}" />
+{{ end }}
+
+<!-- Preconnect to Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<!-- Main stylesheet -->
+{{ $css := resources.Get "css/main.css" | minify }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="%23111" stroke-width="2"/><circle cx="16" cy="16" r="5" fill="%23111"/></svg>' />
+
+{{ range .AlternativeOutputFormats -}}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}" />
+{{ end -}}
